@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WakeUp</string>
+    <string name="action_settings">Settings</string>
+    <string name="create_notification">Create Notification</string>
+    <string name="not_name">Notification Name</string>
+    <string name="ok">OK</string>
+    <string name="set_type">Set Type</string>
+    <string name="loading">loading…</string>
+    <string name="wake_up">Wake Up</string>
+
+    <string-array name="type_array">
+        <item>Working</item>
+        <item>Training</item>
+        <item>Dating</item>
+        <item>Other</item>
+    </string-array>
+</resources>
