@@ -2,13 +2,15 @@ package vtc.room.a101.notificationapp;
 
 public class NotificationModel {
     private String name;
+    private String zoomId;
     private String date;
     private String time;
     private int image;
     private int isTurned;
 
-    public NotificationModel(String name, String date, String time, int image, int isTurned) {
+    public NotificationModel(String name, String zoomId, String date, String time, int image, int isTurned) {
         this.name = name;
+        this.zoomId = zoomId;
         this.date = date;
         this.time = time;
         this.image = image;
@@ -21,6 +23,14 @@ public class NotificationModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getZoomId() {
+        return zoomId;
+    }
+
+    public void setZoomId(String name) {
+        this.zoomId = zoomId;
     }
 
     public String getDate() {

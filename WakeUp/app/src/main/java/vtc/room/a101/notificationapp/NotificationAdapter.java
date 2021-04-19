@@ -39,6 +39,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         } else {
             holder.notSwitch.setChecked(false);
         }
+
+        if (list.get(position).getZoomId() != null) {
+            if (!list.get(position).getZoomId().isEmpty()) {
+                holder.notZoomId.setText("Zoom Conferance ID: " + list.get(position).getZoomId());
+            }
+        }
     }
 
     @Override
@@ -49,6 +55,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     class NotificationViewHolder extends RecyclerView.ViewHolder {
         private ImageView notImage;
         private TextView notName;
+        private TextView notZoomId;
         private TextView notTime;
         private TextView notDate;
         private Switch notSwitch;
@@ -62,6 +69,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         private void findViews(View view) {
             notImage = view.findViewById(R.id.item_image);
             notName = view.findViewById(R.id.item_name);
+            notZoomId = view.findViewById(R.id.item_zoom_id);
             notTime = view.findViewById(R.id.item_time);
             notDate = view.findViewById(R.id.item_date);
             notSwitch = view.findViewById(R.id.switch_for_item);

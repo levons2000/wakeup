@@ -17,6 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_ZOOM_ID = "zoom_id";
     private static final String COLUMN_DATE = "date";
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_IMAGE = "image";
@@ -54,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
         final SQLiteDatabase db = this.getReadableDatabase();
         final ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, model.getName());
+        values.put(COLUMN_ZOOM_ID, model.getZoomId());
         values.put(COLUMN_DATE, model.getDate());
         values.put(COLUMN_TIME, model.getTime());
         values.put(COLUMN_IMAGE, model.getImage());
@@ -76,11 +78,12 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.move(id);
         final String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+        final String zoomId = cursor.getString(cursor.getColumnIndex(COLUMN_ZOOM_ID));
         final String date = cursor.getString(cursor.getColumnIndex(COLUMN_DATE));
         final String time = cursor.getString(cursor.getColumnIndex(COLUMN_TIME));
         final int image = cursor.getInt(cursor.getColumnIndex(COLUMN_IMAGE));
         final int isTurned = cursor.getInt(cursor.getColumnIndex(COLUMN_ISTURNED));
-        return new NotificationModel(name, date, time, image, isTurned);
+        return new NotificationModel(name, zoomId, date, time, image, isTurned);
     }
 
     public int getItemsCount() {

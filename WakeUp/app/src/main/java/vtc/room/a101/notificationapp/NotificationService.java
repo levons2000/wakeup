@@ -28,7 +28,7 @@ public class NotificationService extends Service {
         NotificationManager notificationManager = getApplicationContext().getSystemService(NotificationManager.class);
         Notification notification = new NotificationCompat.Builder(getApplicationContext(), "id")
                 .setContentTitle("WakeUp!")
-                .setContentText("Time to waking up :)")
+                .setContentText(intent.getExtras().getString("zoom_id") != null ? "Time to waking up :)\n" + "Zoom Conferation Id: " + intent.getExtras().getString("zoom_id") : "Time to waking up :)")
                 .setSmallIcon(R.drawable.wakeup)
                 .build();
         notificationManager.createNotificationChannel(channel);

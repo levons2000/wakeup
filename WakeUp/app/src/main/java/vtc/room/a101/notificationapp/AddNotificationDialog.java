@@ -32,7 +32,7 @@ public class AddNotificationDialog extends DialogFragment {
     private static final String CUSTOM_ACTION = "android.intent.action.MAIN";
 
     private final Calendar calendar = Calendar.getInstance();
-    private String name, date, time;
+    private String name, zoomId, date, time;
     private int day, hour, minute;
     private int image;
 
@@ -129,16 +129,22 @@ public class AddNotificationDialog extends DialogFragment {
         name = nameText.getText().toString();
     }
 
+    private void setZoomId(View view) {
+        final EditText zoomIdText = view.findViewById(R.id.zoom_input_name);
+        zoomId = zoomIdText.getText().toString();
+    }
+
     private void addNotification(final View itemView) {
         final Button add = itemView.findViewById(R.id.add_notification);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setName(itemView);
+                setZoomId(itemView);
                 if (checkName(name)) {
                     startAlarm();
                     ((MainActivity) Objects.requireNonNull(getActivity())).addItem(new NotificationModel(
-                            name, date, time, image, 1));
+                            name, zoomId, date, time, image, 1));
                     ((MainActivity) getActivity()).notifyAdapter();
                     dismiss();
                 }
@@ -162,6 +168,11 @@ public class AddNotificationDialog extends DialogFragment {
     private void startAlarm() {
         Intent intent = new Intent(getContext().getApplicationContext(), AlarmService.class);
         intent.putExtra("intarray", new int[]{day, hour, minute});
+        if (zoomId != null) {
+            if (!zoomId.isEmpty()) {
+                intent.putExtra("zoom_id", zoomId);
+            }
+        }
         intent.setAction(CUSTOM_ACTION);
         getContext().startForegroundService(intent);
     }

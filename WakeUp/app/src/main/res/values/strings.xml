@@ -7,8 +7,9 @@
     <string name="set_type">Set Type</string>
     <string name="loading">loading…</string>
     <string name="wake_up">Wake Up</string>
+	<string name="zoom_conferation_id">Zoom Conferation ID</string>
 
-    <string-array name="type_array">
+	<string-array name="type_array">
         <item>Working</item>
         <item>Training</item>
         <item>Dating</item>
